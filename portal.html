@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Client Gallery — Kwartography</title>
+  <meta name="description" content="Access your private Kwartography gallery. View, favourite, and download your photos." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700;900&family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;1,400;1,700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black:   #070707;
+      --bg2:     #0e0e0e;
+      --bg3:     #111;
+      --bg4:     #161616;
+      --border:  rgba(255,255,255,0.08);
+      --muted:   #7a7a7a;
+      --white:   #f8f5f0;
+      --accent:  #c9951a;
+      --accent2: #d9a62e;
+      --ff-d:    'DM Sans', system-ui, sans-serif;
+      --ff-serif:'Playfair Display', Georgia, serif;
+      --ff-b:    'Inter', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--ff-b);
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ═══ NAV ═══════════════════════════════════════════════ */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 20px clamp(24px, 5vw, 56px);
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(7,7,7,0.96);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--ff-d); font-size: 15px; font-weight: 900;
+      letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--white); text-decoration: none;
+    }
+    .nav-logo b { color: var(--accent); }
+    .nav-back {
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      display: flex; align-items: center; gap: 10px;
+      transition: color .3s;
+    }
+    .nav-back:hover { color: var(--white); }
+    .nav-back svg { width: 16px; height: 16px; stroke: currentColor; fill: none; }
+
+    /* ═══ HERO ═══════════════════════════════════════════════ */
+    .portal-hero {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      padding: 160px clamp(24px, 5vw, 56px) 80px;
+      text-align: center;
+    }
+    .portal-hero-inner { max-width: 720px; }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 14px;
+      font-size: 9px; font-weight: 500; letter-spacing: 0.5em;
+      text-transform: uppercase; color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: ''; display: block;
+      width: 24px; height: 1px; background: var(--accent);
+    }
+
+    .portal-title {
+      font-family: var(--ff-serif);
+      font-size: clamp(40px, 6vw, 88px);
+      font-weight: 400; font-style: italic;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .portal-title strong {
+      font-style: normal; font-weight: 700;
+      color: var(--white); display: block;
+    }
+
+    .portal-sub {
+      font-size: 16px; line-height: 1.7;
+      color: var(--muted); max-width: 520px;
+      margin: 0 auto 48px;
+    }
+
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 14px;
+      background: var(--accent);
+      color: var(--black); font-family: var(--ff-b);
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      text-decoration: none;
+      padding: 18px 40px;
+      transition: background .3s;
+    }
+    .btn-gold:hover { background: var(--accent2); }
+    .btn-gold svg { width: 14px; height: 14px; stroke: currentColor; fill: none; }
+
+    .portal-note {
+      margin-top: 20px;
+      font-size: 12px; color: var(--muted);
+    }
+    .portal-note a { color: var(--accent); text-decoration: none; }
+    .portal-note a:hover { text-decoration: underline; }
+
+    /* ═══ FEATURES ════════════════════════════════════════════ */
+    .features {
+      padding: 0 clamp(24px, 5vw, 56px) 120px;
+      max-width: 1000px; margin: 0 auto;
+      width: 100%;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+    .feature {
+      background: var(--bg4);
+      padding: 36px 32px;
+    }
+    .feature-icon {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(201,149,26,0.08);
+      border: 1px solid rgba(201,149,26,0.2);
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+    .feature-icon svg {
+      width: 18px; height: 18px;
+      stroke: var(--accent); fill: none;
+      stroke-width: 1.5;
+    }
+    .feature-title {
+      font-size: 13px; font-weight: 500;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .feature-desc {
+      font-size: 13px; line-height: 1.65;
+      color: var(--muted);
+    }
+
+    /* ═══ DIVIDER ══════════════════════════════════════════════ */
+    .divider {
+      width: 1px; height: 60px;
+      background: linear-gradient(to bottom, transparent, var(--border), transparent);
+      margin: 0 auto 80px;
+    }
+
+    /* ═══ FOOTER ═══════════════════════════════════════════════ */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px clamp(24px, 5vw, 56px);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo {
+      font-family: var(--ff-d); font-size: 13px; font-weight: 900;
+      letter-spacing: 0.4em; text-transform: uppercase;
+      color: var(--white);
+    }
+    .footer-logo b { color: var(--accent); }
+    .footer-links {
+      display: flex; gap: 32px;
+    }
+    .footer-links a {
+      font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none;
+      transition: color .3s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    /* ═══ RESPONSIVE ════════════════════════════════════════════ */
+    @media (max-width: 640px) {
+      .features-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="index.html" class="nav-logo">KWAR<b>T</b>OGRAPHY</a>
+    <a href="index.html" class="nav-back">
+      <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19 12H5M12 5l-7 7 7 7"/>
+      </svg>
+      Back to site
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="portal-hero">
+    <div class="portal-hero-inner">
+      <div class="eyebrow">Client Gallery</div>
+
+      <h1 class="portal-title">
+        <strong>Your Photos Are</strong>
+        Ready &amp; Waiting
+      </h1>
+
+      <p class="portal-sub">
+        John has prepared your private gallery. Browse your images, mark your favourites,
+        download high-resolution files, and order prints — all in one place.
+      </p>
+
+      <a href="https://kwartography.mypixieset.com/client-area/" target="_blank" rel="noopener" class="btn-gold">
+        Access My Gallery
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+
+      <p class="portal-note">
+        Don't have a link yet? <a href="mailto:hello@kwartography.com">Email John</a> and he'll send it over.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <div class="features">
+    <div class="divider"></div>
+    <div class="features-grid">
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <div class="feature-title">Private Gallery</div>
+        <div class="feature-desc">Your images are password-protected and visible only to you. No one else can access your link.</div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <div class="feature-title">Mark Favourites</div>
+        <div class="feature-desc">Heart the shots you love most. John uses your selections to guide final edits and delivery.</div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        </div>
+        <div class="feature-title">High-Res Downloads</div>
+        <div class="feature-desc">Download your final images in full resolution, print-ready quality — yours to keep forever.</div>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <div class="feature-title">Order Prints</div>
+        <div class="feature-desc">Professional prints, canvases, and albums shipped directly to your door — straight from the gallery.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">KWAR<b>T</b>OGRAPHY</span>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="index.html#portfolio">Portfolio</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="mailto:hello@kwartography.com">hello@kwartography.com</a>
+    </div>
+  </footer>
+
+</body>
+</html>

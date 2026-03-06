@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kwartography — Fine Art Photography | Atlanta, Georgia</title>
+  <meta name="description" content="Atlanta-based fine art photographer specialising in portraits, weddings, events and editorial. Originally from Accra, Ghana. Available worldwide." />
+  <link rel="canonical" href="https://kwartography.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://kwartography.com/" />
+  <meta property="og:title"       content="Kwartography — Fine Art Photography | Atlanta, Georgia" />
+  <meta property="og:description" content="Atlanta-based fine art photographer specialising in portraits, weddings, events and editorial. Originally from Accra, Ghana. Available worldwide." />
+  <meta property="og:image"       content="https://kwartography.com/site-photo-download-1of1/Highlights/KW108034.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Kwartography — Fine Art Photography | Atlanta, Georgia" />
+  <meta name="twitter:description" content="Atlanta-based fine art photographer specialising in portraits, weddings, events and editorial." />
+  <meta name="twitter:image"       content="https://kwartography.com/site-photo-download-1of1/Highlights/KW108034.jpg" />
+
+  <!-- Local SEO -->
+  <meta name="geo.region"    content="US-GA" />
+  <meta name="geo.placename" content="Atlanta, Georgia" />
+  <meta name="keywords"      content="Atlanta photographer, Georgia portrait photographer, wedding photographer Atlanta, fine art photography Georgia, Kwartography" />
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Kwartography",
+    "description": "Fine art photographer specialising in portraits, weddings, events and editorial. Based in Atlanta, Georgia.",
+    "@id": "https://kwartography.com",
+    "url": "https://kwartography.com",
+    "image": "https://kwartography.com/site-photo-download-1of1/Highlights/KW108034.jpg",
+    "priceRange": "$$",
+    "email": "hello@kwartography.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Atlanta",
+      "addressRegion": "GA",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 33.749,
+      "longitude": -84.388
+    },
+    "sameAs": ["https://kwartography.mypixieset.com/"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Photography Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Portrait Sessions"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Wedding Photography"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Editorial & Commercial"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Event Coverage"}}
+      ]
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&display=swap" rel="stylesheet" />
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <style>
+    :root {
+      --black:   #0a0a0a;
+      --bg2:     #111111;
+      --bg3:     #161616;
+      --bg4:     #1d1d1d;
+      --steel:   #2a2a2a;
+      --mid:     #555;
+      --muted:   #6c7179;
+      --white:   #f0f0f0;
+      --bright:  #ffffff;
+      --accent:  #c9951a;
+      --accent2: #d9a62e;
+      --border:  rgba(255,255,255,0.07);
+      --ff-d: 'Inter', system-ui, sans-serif;
+      --ff-c: 'Inter', system-ui, sans-serif;
+      --ff-b: 'Inter', system-ui, sans-serif;
+      --ff-serif: 'Playfair Display', Georgia, serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: auto; background: var(--black); }
+    body {
+      background: var(--black); color: var(--white);
+      font-family: var(--ff-b); font-weight: 300;
+      overflow-x: hidden; cursor: none;
+    }
+    img { display: block; max-width: 100%; }
+
+    /* ═══ CURSOR ═══════════════════════════════════════════ */
+    #cd, #cr {
+      position: fixed; top: 0; left: 0;
+      border-radius: 50%; pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%);
+    }
+    #cd { width: 6px; height: 6px; background: var(--accent); }
+    #cr {
+      width: 28px; height: 28px;
+      border: 1px solid rgba(201,149,26,0.5);
+      transition: width .45s cubic-bezier(.16,1,.3,1),
+                  height .45s cubic-bezier(.16,1,.3,1),
+                  border-color .3s, background .3s;
+    }
+    #cr.lg   { width: 64px; height: 64px; border-color: var(--accent); }
+    #cr.view { width: 88px; height: 88px; border-color: var(--accent2); background: rgba(201,149,26,0.05); }
+
+    /* ═══ LOADER ════════════════════════════════════════════ */
+    #ldr {
+      position: fixed; inset: 0; z-index: 8000;
+      background: var(--black);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 28px;
+    }
+    .ldr-word {
+      font-family: var(--ff-d); font-size: 52px; font-weight: 900;
+      letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--white); display: flex; overflow: hidden;
+    }
+    .ldr-ch { display: inline-block; transform: translateY(100%); opacity: 0; }
+    .ldr-bar-wrap { width: 220px; height: 1px; background: var(--steel); overflow: hidden; }
+    .ldr-bar { height: 100%; background: var(--accent); width: 0; }
+    .ldr-n { font-family: var(--ff-b); font-size: 11px; letter-spacing: 0.3em; color: var(--muted); }
+
+    /* ═══ MOBILE MENU ═══════════════════════════════════════ */
+    #mmenu {
+      position: fixed; inset: 0; z-index: 700;
+      background: var(--black);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      opacity: 0; visibility: hidden;
+      transition: opacity .5s cubic-bezier(.16,1,.3,1), visibility .5s;
+    }
+    #mmenu.open { opacity: 1; visibility: visible; }
+    .mm-links { list-style: none; text-align: center; }
+    .mm-links li { overflow: hidden; margin-bottom: 4px; }
+    .mm-links a {
+      display: block;
+      font-family: var(--ff-d); font-size: clamp(44px, 8vw, 88px);
+      font-weight: 900; text-transform: uppercase; letter-spacing: -0.01em;
+      color: var(--white); text-decoration: none;
+      line-height: 1.1; cursor: none;
+      transform: translateY(100%);
+      transition: transform .7s cubic-bezier(.16,1,.3,1), color .3s;
+    }
+    #mmenu.open .mm-links a { transform: translateY(0); }
+    #mmenu.open .mm-links li:nth-child(1) a { transition-delay: .08s; }
+    #mmenu.open .mm-links li:nth-child(2) a { transition-delay: .13s; }
+    #mmenu.open .mm-links li:nth-child(3) a { transition-delay: .18s; }
+    #mmenu.open .mm-links li:nth-child(4) a { transition-delay: .23s; }
+    #mmenu.open .mm-links li:nth-child(5) a { transition-delay: .28s; }
+    .mm-links a:hover { color: var(--accent); }
+    .mm-social {
+      position: absolute; bottom: 48px; left: 56px;
+      display: flex; gap: 24px;
+    }
+    .mm-social a {
+      font-size: 9px; letter-spacing: .3em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; cursor: none;
+      transition: color .3s;
+    }
+    .mm-social a:hover { color: var(--accent); }
+    .mm-close-hint {
+      position: absolute; bottom: 52px; right: 56px;
+      font-size: 9px; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--steel);
+    }
+
+    /* ═══ NAV ═══════════════════════════════════════════════ */
+    #nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      padding: 20px 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: rgba(7,7,7,0.96);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: padding .5s;
+    }
+    #nav.stuck { padding: 14px 56px; }
+    .nav-logo {
+      font-family: var(--ff-d); font-size: 15px; font-weight: 900;
+      letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--white); text-decoration: none; cursor: none;
+    }
+    .nav-logo b { color: var(--accent); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--muted); text-decoration: none; cursor: none;
+      transition: color .3s; position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px; background: var(--accent);
+      transition: width .4s cubic-bezier(.16,1,.3,1);
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-links a.nav-portal {
+      color: var(--accent); border: 1px solid rgba(201,149,26,0.35);
+      padding: 6px 14px; border-radius: 2px;
+      transition: color .3s, background .3s, border-color .3s;
+    }
+    .nav-links a.nav-portal::after { display: none; }
+    .nav-links a.nav-portal:hover { color: var(--black); background: var(--accent); border-color: var(--accent); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-book {
+      font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--black); background: var(--accent);
+      padding: 11px 28px; text-decoration: none; cursor: none;
+      transition: background .3s; font-weight: 400;
+    }
+    .nav-book:hover { background: var(--accent2); }
+    .ham {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: none; padding: 4px; z-index: 800; background: none; border: none;
+    }
+    .ham span {
+      display: block; width: 22px; height: 1.5px;
+      background: var(--white); transition: all .35s cubic-bezier(.16,1,.3,1);
+    }
+    .ham.open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+    .ham.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .ham.open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+    /* ═══ HERO ══════════════════════════════════════════════ */
+    #hero {
+      position: relative; height: 100vh; min-height: 700px;
+      overflow: hidden; background: #000; z-index: 1;
+      clip-path: inset(0px 0px 0px 0px round 0px);
+      will-change: clip-path;
+    }
+    .hero-bg-wrap {
+      position: absolute; inset: 0;
+    }
+    .hero-photo {
+      position: absolute; inset: 0; width: 100%; height: 115%; top: -7.5%;
+      object-fit: cover; object-position: center 25%;
+      will-change: transform; transition: opacity .8s ease;
+    }
+    /* Video hero — drop hero-loop.mp4 into site-video/ to activate */
+    .hero-video {
+      position: absolute; inset: 0; width: 100%; height: 115%; top: -7.5%;
+      object-fit: cover; object-position: center 25%;
+      opacity: 0; transition: opacity 1.2s ease; pointer-events: none;
+    }
+    .hero-video.playing { opacity: 1; }
+    .hero-video.playing ~ .hero-photo { opacity: 0; }
+    .hero-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      /* Keep photo visible in upper 60%, darkens progressively toward bottom */
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.08) 0%,
+        rgba(0,0,0,0.04) 35%,
+        rgba(0,0,0,0.55) 68%,
+        rgba(0,0,0,0.86) 100%
+      );
+    }
+    /* Subtle left vignette to frame text */
+    .hero-overlay::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(0,0,0,0.32) 0%, transparent 55%);
+    }
+    /* Text block — anchored bottom-left like a photo caption */
+    .hero-content {
+      position: absolute; bottom: 72px; left: 56px;
+      z-index: 10; max-width: 680px;
+    }
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 22px;
+    }
+    .hero-ey-tag {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.42em;
+      text-transform: uppercase; color: rgba(255,255,255,0.52);
+    }
+    .hero-ey-sep {
+      width: 3px; height: 3px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+    }
+    .hero-h1 {
+      font-family: var(--ff-serif);
+      font-size: clamp(48px, 6.5vw, 108px);
+      font-weight: 900; line-height: 0.88;
+      letter-spacing: -0.02em; text-transform: uppercase;
+      color: #fff; margin-bottom: 36px;
+    }
+    .hero-h1 .ww { display: block; overflow: hidden; }
+    .hero-h1 .wi { display: block; }
+    .hero-h1 em {
+      font-style: italic; color: var(--accent);
+      font-weight: 900; font-size: 0.92em; text-transform: none;
+    }
+    .hero-actions {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+    }
+    .hero-cta-btn {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.28em;
+      text-transform: uppercase; text-decoration: none; cursor: none;
+      padding: 14px 36px; background: var(--white); color: var(--black);
+      transition: background .3s, color .3s;
+    }
+    .hero-cta-btn:hover { background: var(--accent); }
+    .hero-cta-ghost {
+      font-size: 10px; font-weight: 600; letter-spacing: 0.28em;
+      text-transform: uppercase; text-decoration: none; cursor: none;
+      color: rgba(255,255,255,0.46);
+      display: flex; align-items: center; gap: 12px; transition: color .3s;
+    }
+    .hero-cta-ghost:hover { color: #fff; }
+    .h-arr {
+      display: block; width: 20px; height: 1px;
+      background: currentColor; position: relative; flex-shrink: 0;
+    }
+    .h-arr::after {
+      content: ''; position: absolute; right: 0; top: -3px;
+      width: 7px; height: 7px;
+      border-right: 1px solid currentColor; border-top: 1px solid currentColor;
+      transform: rotate(45deg);
+    }
+    /* Scroll cue — bottom right */
+    .hero-scroll-cue {
+      position: absolute; bottom: 48px; right: 56px; z-index: 10;
+      display: flex; flex-direction: column; align-items: center; gap: 10px;
+    }
+    .hero-scroll-cue span {
+      font-size: 8px; font-weight: 600; letter-spacing: 0.45em;
+      text-transform: uppercase; color: rgba(255,255,255,0.3);
+      writing-mode: vertical-rl;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 60px;
+      background: rgba(255,255,255,0.12); overflow: hidden; position: relative;
+    }
+    .hero-scroll-dot {
+      position: absolute; top: -35%; left: 0; width: 100%; height: 35%;
+      background: linear-gradient(to bottom, transparent, var(--accent));
+      animation: scrollDot 2s ease-in-out infinite;
+    }
+    @keyframes scrollDot { 0% { top: -35%; } 100% { top: 100%; } }
+
+    /* ═══ MARQUEE ═══════════════════════════════════════════ */
+    .mqw {
+      overflow: hidden; border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0; background: var(--bg2);
+    }
+    .mqi { display: flex; white-space: nowrap; animation: mql 30s linear infinite; }
+    .mqw:hover .mqi { animation-play-state: paused; }
+    .mqt {
+      font-family: var(--ff-d); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.45em; text-transform: uppercase;
+      color: var(--mid); padding: 0 40px;
+    }
+    .mqt .dot { color: var(--accent); margin: 0 8px; }
+    @keyframes mql { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+    /* ═══ SECTION COMMON ════════════════════════════════════ */
+    .sec { padding: 180px 56px; }
+    .sec-inner { max-width: 1400px; margin: 0 auto; }
+    .sl { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+    .sl::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); flex-shrink: 0; }
+    .sl span { font-size: 9px; font-weight: 500; letter-spacing: 0.5em; text-transform: uppercase; color: var(--accent); }
+    .stitle {
+      font-family: var(--ff-serif);
+      font-size: clamp(38px, 4.5vw, 68px);
+      font-weight: 900; line-height: 0.92;
+      text-transform: uppercase; color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .stitle em {
+      font-style: italic; color: var(--accent);
+      font-weight: 900;
+      font-size: 0.95em; text-transform: none; letter-spacing: -0.03em;
+    }
+    .stitle .cw { display: inline-block; overflow: hidden; }
+    .stitle .ci { display: block; transform: translateY(110%); }
+
+    /* ═══ BACK TO TOP ═══════════════════════════════════════ */
+    #btt {
+      position: fixed; bottom: 36px; right: 36px; z-index: 400;
+      width: 48px; height: 48px;
+      background: var(--accent); border: none; cursor: none;
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .4s, transform .4s, background .3s;
+    }
+    #btt.show { opacity: 1; transform: translateY(0); }
+    #btt:hover { background: var(--accent2); }
+    #btt svg { width: 14px; height: 14px; stroke: var(--black); fill: none; stroke-width: 2; }
+
+
+    /* ═══ STATS BAND ════════════════════════════════════════ */
+    #stats {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .stats-inner {
+      max-width: 1400px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      border-left: 1px solid var(--border);
+    }
+    .stat-cell {
+      padding: 64px 40px;
+      border-right: 1px solid var(--border);
+      position: relative; overflow: hidden; cursor: default;
+      transition: background .4s;
+    }
+    .stat-cell:hover { background: var(--bg3); }
+    .stat-cell::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--accent);
+      transition: width .6s cubic-bezier(.16,1,.3,1);
+    }
+    .stat-cell:hover::after { width: 100%; }
+    .stat-n {
+      font-family: var(--ff-d); font-size: clamp(48px, 5vw, 78px);
+      font-weight: 900; line-height: 1;
+      color: var(--accent); display: block; margin-bottom: 12px;
+      letter-spacing: -0.03em;
+    }
+    .stat-l {
+      font-size: 10px; font-weight: 600; letter-spacing: .28em;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .stat-desc {
+      font-size: 13px; font-weight: 300; color: var(--steel);
+      margin-top: 8px; line-height: 1.6;
+    }
+    @media (max-width: 1024px) {
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .stat-cell { padding: 40px 24px; }
+      #btt { bottom: 24px; right: 24px; width: 40px; height: 40px; }
+    }
+
+    /* ═══ ABOUT ═════════════════════════════════════════════ */
+    #about { background: var(--black); }
+    .about-g { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+    .aph { position: relative; }
+    .aph-main { width: 100%; aspect-ratio: 3/4; overflow: hidden; clip-path: inset(100% 0 0 0); }
+    .aph-main img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.1); }
+    .aph-corner {
+      position: absolute; top: -20px; left: -20px;
+      width: 80px; height: 80px;
+      border-top: 1px solid var(--accent); border-left: 1px solid var(--accent);
+    }
+    .astat {
+      position: absolute; bottom: 60px; left: -44px;
+      background: var(--bg3); border: 1px solid var(--border);
+      padding: 20px 28px; opacity: 0; transform: translateX(-20px);
+    }
+    .astat-n { font-family: var(--ff-d); font-size: 52px; font-weight: 900; color: var(--accent); line-height: 1; letter-spacing: -0.03em; }
+    .astat-l { font-size: 9px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+    .atxt .stitle { margin-bottom: 28px; }
+    .abody { font-size: 15px; font-weight: 300; line-height: 2; color: var(--muted); margin-bottom: 44px; }
+    .asign { font-family: var(--ff-serif); font-size: 36px; font-style: italic; font-weight: 700; color: var(--accent); margin-bottom: 44px; opacity: 0; transform: translateX(-14px); }
+
+    /* ═══ BUTTONS ═══════════════════════════════════════════ */
+    .btn {
+      display: inline-flex; align-items: center; gap: 16px;
+      font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase;
+      text-decoration: none; cursor: none; position: relative; overflow: hidden;
+    }
+    .btn-gold { color: var(--black); background: var(--accent); padding: 14px 36px; transition: background .3s; }
+    .btn-gold:hover { background: var(--accent2); }
+    .btn-wht { color: var(--white); border: 1px solid var(--border); padding: 14px 36px; transition: background .3s, border-color .3s; }
+    .btn-wht:hover { background: var(--steel); border-color: var(--mid); }
+    .btn .arr { width: 20px; transition: width .4s; }
+    .btn:hover .arr { width: 32px; }
+
+    /* ═══ PORTFOLIO ═════════════════════════════════════════ */
+    #portfolio { background: var(--black); padding-bottom: 0; }
+    .ph { margin-bottom: 56px; }
+    .pfil { display: flex; gap: 0; margin-top: 32px; border-bottom: 1px solid var(--border); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .pfil::-webkit-scrollbar { display: none; }
+    .pfb {
+      font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--muted); background: none; border: none;
+      padding: 12px 20px; cursor: none; transition: color .3s;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      white-space: nowrap; flex-shrink: 0;
+    }
+    .pfb.on, .pfb:hover { color: var(--white); border-bottom-color: var(--accent); }
+    /* ── Masonry grid ── */
+    .pgrid {
+      columns: 3;
+      column-gap: 3px;
+    }
+    .pi {
+      break-inside: avoid;
+      display: block;
+      margin-bottom: 3px;
+      position: relative; overflow: hidden; cursor: none;
+    }
+    .pi img {
+      width: 100%; height: auto; display: block;
+      transition: transform .9s cubic-bezier(.16,1,.3,1), filter .6s;
+      filter: saturate(.85) brightness(.92);
+    }
+    .pi:hover img { transform: scale(1.04); filter: saturate(1) brightness(1); }
+    .pov {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(7,7,7,.85) 0%, transparent 50%);
+      opacity: 0; transition: opacity .45s;
+      display: flex; align-items: flex-end; padding: 20px;
+    }
+    .pi:hover .pov { opacity: 1; }
+    .pcat { font-size: 8px; letter-spacing: .4em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+    .pname { font-family: var(--ff-d); font-size: 18px; font-weight: 600; color: var(--white); }
+    .pi .rmask { position: absolute; inset: 0; background: var(--black); transform-origin: bottom; z-index: 2; }
+    .port-more { text-align: center; padding: 80px 56px; background: var(--black); }
+
+
+    /* ═══ SERVICES ══════════════════════════════════════════ */
+    #services { background: var(--black); }
+    .svgrid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+      margin-top: 80px;
+    }
+    .svc {
+      padding: 52px 40px; border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border); position: relative;
+      overflow: hidden; cursor: none; transition: background .4s;
+    }
+    .svc::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px; background: var(--accent);
+      transition: width .6s cubic-bezier(.16,1,.3,1);
+    }
+    .svc:hover::after { width: 100%; }
+    .svc:hover { background: var(--bg3); }
+    .snum { font-family: var(--ff-d); font-size: 48px; font-weight: 800; color: var(--steel); line-height: 1; margin-bottom: 24px; }
+    .svc:hover .snum { color: rgba(201,149,26,.2); transition: color .4s; }
+    .snm { font-family: var(--ff-d); font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: .04em; color: var(--white); margin-bottom: 12px; }
+    .sdc { font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--muted); }
+    .slnk { display: inline-flex; align-items: center; gap: 10px; margin-top: 28px; font-size: 9px; letter-spacing: .28em; text-transform: uppercase; color: var(--accent); opacity: 0; transform: translateY(6px); transition: opacity .4s, transform .4s; }
+    .svc:hover .slnk { opacity: 1; transform: translateY(0); }
+
+    /* ═══ SPREAD / PULLQUOTE ════════════════════════════════ */
+    #spread { height: 88vh; position: relative; overflow: hidden; }
+    .spimg { width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+    #spread::after { content: ''; position: absolute; inset: 0; background: rgba(7,7,7,.52); pointer-events: none; }
+    .spcopy {
+      position: absolute; inset: 0; z-index: 2;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 48px;
+    }
+    .spq {
+      font-family: var(--ff-serif);
+      font-size: clamp(26px, 3.8vw, 60px);
+      font-style: italic; font-weight: 400;
+      color: var(--white); max-width: 860px;
+      line-height: 1.35; margin-bottom: 28px;
+    }
+    .spattr { font-size: 9px; letter-spacing: .5em; text-transform: uppercase; color: var(--accent); }
+
+    /* ═══ PROCESS ═══════════════════════════════════════════ */
+    #process { background: var(--bg2); }
+    .prgrid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 80px; border-top: 1px solid var(--border); }
+    .prstep { padding: 40px 32px 40px 0; border-right: 1px solid var(--border); position: relative; }
+    .prstep:last-child { border-right: none; }
+    .prstep::before {
+      content: ''; position: absolute; top: -1px; left: 0;
+      width: 0; height: 2px; background: var(--accent);
+      transition: width .7s cubic-bezier(.16,1,.3,1);
+    }
+    .prstep:hover::before { width: 100%; }
+    .prn { font-family: var(--ff-d); font-size: 11px; letter-spacing: .35em; color: var(--accent); margin-bottom: 18px; }
+    .prt { font-family: var(--ff-d); font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--white); margin-bottom: 10px; }
+    .prd { font-size: 13px; font-weight: 300; line-height: 1.9; color: var(--muted); }
+
+
+    /* ═══ TESTIMONIALS ══════════════════════════════════════ */
+    #testimonials { background: var(--black); }
+    .tgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 80px; background: var(--border); }
+    .tc { background: var(--black); padding: 44px 36px; position: relative; overflow: hidden; cursor: none; transition: background .4s; }
+    .tc:hover { background: var(--bg3); }
+    .tc::before { content: '"'; font-family: var(--ff-serif); font-size: 160px; font-style: italic; color: rgba(201,149,26,.07); position: absolute; top: -20px; left: 16px; line-height: 1; }
+    .tstars { display: flex; gap: 5px; margin-bottom: 22px; }
+    .tstar { color: var(--accent); }
+    .tstar svg { width: 13px; height: 13px; display: block; fill: currentColor; }
+    .ttxt { font-family: var(--ff-c); font-size: 16px; font-style: italic; font-weight: 400; line-height: 1.85; color: rgba(240,240,240,.7); margin-bottom: 28px; }
+    .tau { display: flex; align-items: center; gap: 14px; }
+    .tav { width: 42px; height: 42px; border-radius: 50%; object-fit: cover; border: 1px solid var(--steel); }
+    .tnm { font-size: 13px; font-weight: 400; color: var(--white); }
+    .trl { font-size: 9px; letter-spacing: .22em; text-transform: uppercase; color: var(--muted); margin-top: 2px; }
+
+    /* ═══ CONTACT ═══════════════════════════════════════════ */
+    #contact { background: var(--bg3); position: relative; overflow: hidden; }
+    #contact::before {
+      content: 'BOOK'; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      font-family: var(--ff-d); font-size: 280px; font-weight: 800;
+      color: rgba(255,255,255,.015); white-space: nowrap; pointer-events: none; letter-spacing: .15em;
+    }
+    .ctg { display: grid; grid-template-columns: 1fr 1.1fr; gap: 100px; position: relative; z-index: 1; }
+    .cti .stitle { margin-bottom: 28px; }
+    .ctb { font-size: 15px; font-weight: 300; line-height: 2; color: var(--muted); margin-bottom: 44px; }
+    .ctrows { display: flex; flex-direction: column; gap: 18px; }
+    .crow { display: flex; align-items: center; gap: 16px; }
+    .cion { width: 42px; height: 42px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--bg4); transition: background .3s, border-color .3s; }
+    .crow:hover .cion { background: var(--accent); border-color: var(--accent); }
+    .cion svg { width: 15px; height: 15px; stroke: var(--accent); fill: none; stroke-width: 1.5; transition: stroke .3s; }
+    .crow:hover .cion svg { stroke: var(--black); }
+    .clbl { font-size: 8px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+    .cval { font-size: 14px; color: var(--white); font-weight: 300; margin-top: 2px; }
+    .ctf { display: flex; flex-direction: column; gap: 12px; }
+    .fr { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .fg { display: flex; flex-direction: column; gap: 6px; }
+    .fg label { font-size: 8px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
+    .fg input, .fg textarea, .fg select {
+      background: var(--bg4); border: 1px solid var(--border);
+      color: var(--white); font-family: var(--ff-b); font-weight: 300;
+      font-size: 14px; padding: 12px 16px; outline: none; cursor: none; appearance: none;
+      transition: border-color .3s;
+    }
+    .fg input:focus, .fg textarea:focus, .fg select:focus { border-color: var(--accent); }
+    .fg textarea { resize: vertical; min-height: 110px; }
+    .fg select option { background: var(--bg3); }
+    .btsub {
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      width: 100%; padding: 16px; background: var(--accent);
+      color: var(--black); font-family: var(--ff-d); font-size: 14px;
+      font-weight: 700; letter-spacing: .3em; text-transform: uppercase;
+      border: none; cursor: none; transition: background .3s;
+    }
+    .btsub:hover { background: var(--accent2); }
+
+    /* ═══ LIGHTBOX ══════════════════════════════════════════ */
+    #lb { position: fixed; inset: 0; z-index: 600; background: rgba(7,7,7,.97); display: none; align-items: center; justify-content: center; padding: 56px; }
+    #lb.open { display: flex; }
+    #lb img { max-width: 100%; max-height: 86vh; object-fit: contain; }
+    #lbx { position: absolute; top: 24px; right: 40px; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); background: none; border: none; cursor: none; display: flex; align-items: center; gap: 10px; transition: color .3s; }
+    #lbx::before { content: ''; display: block; width: 20px; height: 1px; background: currentColor; }
+    #lbx:hover { color: var(--accent); }
+    .lbnav { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; background: var(--bg3); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: none; transition: background .3s, border-color .3s; }
+    .lbnav:hover { background: var(--accent); border-color: var(--accent); }
+    .lbnav:hover svg { stroke: var(--black); }
+    #lbp { left: 24px; } #lbn { right: 24px; }
+    .lbnav svg { width: 16px; height: 16px; stroke: var(--white); fill: none; stroke-width: 1.5; }
+    #lbcap { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); font-size: 9px; letter-spacing: .4em; text-transform: uppercase; color: var(--muted); }
+
+    /* ═══ FOOTER ════════════════════════════════════════════ */
+    footer { background: var(--black); border-top: 1px solid var(--border); padding: 56px; }
+    .fti { max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .ftl { font-family: var(--ff-d); font-size: 20px; font-weight: 900; letter-spacing: .4em; text-transform: uppercase; color: var(--white); }
+    .ftl b { color: var(--accent); }
+    .ftc { font-size: 10px; letter-spacing: .15em; color: var(--muted); }
+    .ftsoc { display: flex; gap: 14px; }
+    .ftsc { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; cursor: none; text-decoration: none; transition: border-color .3s, background .3s; }
+    .ftsc:hover { border-color: var(--accent); background: rgba(201,149,26,.12); }
+    .ftsc svg { width: 13px; height: 13px; fill: var(--mid); transition: fill .3s; }
+    .ftsc:hover svg { fill: var(--accent); }
+
+
+    /* ═══ RESPONSIVE ════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      #nav { padding: 16px 24px; } #nav.stuck { padding: 12px 24px; }
+      .nav-links, .nav-book { display: none; }
+      .ham { display: flex; }
+      .sec { padding: 100px 24px; }
+      .hero-content { left: 32px; bottom: 56px; }
+      .hero-scroll-cue { right: 32px; }
+      .about-g { grid-template-columns: 1fr; gap: 60px; }
+
+      .astat { left: 0; }
+      .pgrid { columns: 2; }
+      .svgrid { grid-template-columns: 1fr; }
+      .prgrid { grid-template-columns: 1fr 1fr; }
+      .tgrid { grid-template-columns: 1fr; }
+      .ctg { grid-template-columns: 1fr; gap: 60px; }
+      .fti { flex-direction: column; gap: 24px; text-align: center; }
+      .port-more { padding: 60px 24px; }
+      .mm-social { left: 24px; bottom: 32px; }
+      .mm-close-hint { right: 24px; bottom: 36px; }
+    }
+    @media (max-width: 640px) {
+      .hero-content { left: 24px; right: 24px; bottom: 44px; max-width: none; }
+      .hero-h1 { font-size: clamp(40px, 11vw, 72px); margin-bottom: 28px; }
+      .hero-eyebrow { margin-bottom: 16px; }
+      .hero-scroll-cue { display: none; }
+      .pgrid { columns: 1; }
+      .prgrid { grid-template-columns: 1fr; }
+      .fr { grid-template-columns: 1fr; }
+      footer { padding: 40px 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+
+    /* ═══ LIGHT SECTIONS ═══════════════════════════════════ */
+    /* Stats band → light */
+    #stats {
+      background: #F6F5F2;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    #stats .stats-inner { border-left-color: rgba(0,0,0,0.08); }
+    #stats .stat-cell { border-right-color: rgba(0,0,0,0.08); }
+    #stats .stat-cell:hover { background: #eae8e3; }
+    #stats .stat-l { color: #666; }
+    #stats .stat-desc { color: #999; }
+
+    /* About → light */
+    #about { background: #ffffff; }
+    #about .stitle { color: #0d0d0d; }
+    #about .stitle em { color: var(--accent); }
+    #about .sl span { color: var(--accent); }
+    #about .abody { color: #5a5a5a; }
+
+    #about .astat {
+      background: #ffffff;
+      border-color: rgba(0,0,0,0.1);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    #about .astat-l { color: #777; }
+    #about .btn-wht { color: #0d0d0d; border-color: rgba(0,0,0,0.2); }
+    #about .btn-wht:hover { background: #f0eeea; border-color: rgba(0,0,0,0.35); }
+
+    /* Portfolio → light */
+    #portfolio { background: #F6F5F2; }
+    #portfolio .stitle { color: #0d0d0d; }
+    #portfolio .stitle em { color: var(--accent); }
+    #portfolio .sl span { color: var(--accent); }
+    #portfolio .pfb { color: #888; border-bottom-color: transparent; }
+    #portfolio .pfb.on,
+    #portfolio .pfb:hover { color: #0d0d0d; border-bottom-color: var(--accent); }
+    #portfolio .pi .rmask { background: #F6F5F2; }
+    #portfolio .port-more { background: #F6F5F2; }
+    #portfolio .port-more .btn-wht { color: #0d0d0d; border-color: rgba(0,0,0,0.2); }
+    #portfolio .port-more .btn-wht:hover { background: #eae8e3; border-color: rgba(0,0,0,0.35); }
+
+    /* Services → light */
+    #services { background: #ffffff; }
+    #services .stitle { color: #0d0d0d; }
+    #services .stitle em { color: var(--accent); }
+    #services .sl span { color: var(--accent); }
+    #services .svgrid {
+      border-top-color: rgba(0,0,0,0.1);
+      border-left-color: rgba(0,0,0,0.1);
+    }
+    #services .svc {
+      border-right-color: rgba(0,0,0,0.1);
+      border-bottom-color: rgba(0,0,0,0.1);
+    }
+    #services .svc:hover { background: #f6f5f2; }
+    #services .snum { color: rgba(0,0,0,0.07); }
+    #services .svc:hover .snum { color: rgba(201,149,26,0.18); transition: color .4s; }
+    #services .snm { color: #0d0d0d; }
+    #services .sdc { color: #666; }
+    #services .slnk { color: var(--accent); }
+
+    /* Process → light */
+    #process { background: #F6F5F2; }
+    #process .stitle { color: #0d0d0d; }
+    #process .stitle em { color: var(--accent); }
+    #process .sl span { color: var(--accent); }
+    #process .prgrid { border-top-color: rgba(0,0,0,0.1); }
+    #process .prstep { border-right-color: rgba(0,0,0,0.1); }
+    #process .prt { color: #0d0d0d; }
+    #process .prd { color: #666; }
+
+    /* Testimonials → light */
+    #testimonials { background: #ffffff; }
+    #testimonials .stitle { color: #0d0d0d; }
+    #testimonials .stitle em { color: var(--accent); }
+    #testimonials .sl span { color: var(--accent); }
+    #testimonials .tgrid { background: rgba(0,0,0,0.06); }
+    #testimonials .tc { background: #ffffff; }
+    #testimonials .tc:hover { background: #f6f5f2; }
+    #testimonials .tc::before { color: rgba(201,149,26,0.06); }
+    #testimonials .ttxt { color: rgba(13,13,13,0.68); }
+    #testimonials .tnm { color: #0d0d0d; }
+    #testimonials .trl { color: #888; }
+    #testimonials .tav { border-color: rgba(0,0,0,0.12); }
+
+    /* Contact → light */
+    #contact { background: #F6F5F2; }
+    #contact::before { color: rgba(0,0,0,0.018); }
+    #contact .stitle { color: #0d0d0d; }
+    #contact .stitle em { color: var(--accent); }
+    #contact .sl span { color: var(--accent); }
+    #contact .ctb { color: #5a5a5a; }
+    #contact .cion { background: #eae8e3; border-color: rgba(0,0,0,0.1); }
+    #contact .cion svg { stroke: var(--accent); }
+    #contact .crow:hover .cion { background: var(--accent); border-color: var(--accent); }
+    #contact .crow:hover .cion svg { stroke: #000; }
+    #contact .clbl { color: #888; }
+    #contact .cval { color: #0d0d0d; }
+    #contact .fg label { color: #888; }
+    #contact .fg input,
+    #contact .fg textarea,
+    #contact .fg select {
+      background: #ffffff;
+      border-color: rgba(0,0,0,0.14);
+      color: #0d0d0d;
+    }
+    #contact .fg input::placeholder,
+    #contact .fg textarea::placeholder { color: #bbb; }
+    #contact .fg input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.4; cursor: pointer; }
+    #contact .fg input:focus,
+    #contact .fg textarea:focus,
+    #contact .fg select:focus { border-color: var(--accent); }
+    #contact .fg select option { background: #ffffff; color: #0d0d0d; }
+
+    /* Nav always dark-glass when stuck */
+    #nav.stuck {
+      background: rgba(7,7,7,0.97);
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CURSOR -->
+  <div id="cd"></div>
+  <div id="cr"></div>
+
+  <!-- BACK TO TOP -->
+  <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+    <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+  </button>
+
+  <!-- LOADER -->
+  <div id="ldr">
+    <div class="ldr-word" id="lw"></div>
+    <div class="ldr-bar-wrap"><div class="ldr-bar" id="lb2"></div></div>
+    <div class="ldr-n" id="lnum">0%</div>
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mmenu">
+    <ul class="mm-links">
+      <li><a href="#about"        onclick="closeMenu()">About</a></li>
+      <li><a href="#portfolio"    onclick="closeMenu()">Portfolio</a></li>
+      <li><a href="#services"     onclick="closeMenu()">Services</a></li>
+      <li><a href="#contact"      onclick="closeMenu()">Contact</a></li>
+      <li><a href="portal.html"   onclick="closeMenu()">Client Gallery</a></li>
+    </ul>
+    <div class="mm-social">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">WhatsApp</a>
+    </div>
+    <div class="mm-close-hint">Esc to close</div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">KWAR<b>T</b>OGRAPHY</a>
+    <ul class="nav-links">
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#testimonials">Clients</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="portal.html" class="nav-portal">Client Gallery</a></li>
+    </ul>
+    <a href="#contact" class="nav-book">Book a Session</a>
+    <button class="ham" id="ham" onclick="toggleMenu()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg-wrap">
+      <!-- Add site-video/hero-loop.mp4 to activate video hero -->
+      <video class="hero-video" id="heroVideo" autoplay muted loop playsinline>
+        <source src="site-video/hero-loop.mp4" type="video/mp4" />
+      </video>
+      <img
+        class="hero-photo" id="heroBgImg"
+        src="site-photo-download-1of1/Highlights/KW108034.jpg"
+        alt="Kwartography — Fine Art Photography"
+        fetchpriority="high"
+      />
+    </div>
+    <div class="hero-overlay"></div>
+
+    <!-- Text: anchored bottom-left like a photo caption -->
+    <div class="hero-content" id="h-content">
+      <div class="hero-eyebrow" id="h-ey">
+        <span class="hero-ey-tag">Fine Art Photography</span>
+        <span class="hero-ey-sep"></span>
+        <span class="hero-ey-tag">Georgia, USA</span>
+      </div>
+      <h1 class="hero-h1" id="h-h1">
+        <span class="ww"><span class="wi">Your Story</span></span>
+        <span class="ww"><span class="wi">Through <em>Pictures</em></span></span>
+      </h1>
+      <div class="hero-actions" id="h-act">
+        <a href="#portfolio" class="hero-cta-btn">View Portfolio</a>
+        <a href="#contact" class="hero-cta-ghost">
+          Book a Session <span class="h-arr"></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll cue -->
+    <div class="hero-scroll-cue">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"><div class="hero-scroll-dot"></div></div>
+    </div>
+
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="mqw">
+    <div class="mqi">
+      <span class="mqt">Portraits <span class="dot">✦</span></span>
+      <span class="mqt">Weddings <span class="dot">✦</span></span>
+      <span class="mqt">Editorial <span class="dot">✦</span></span>
+      <span class="mqt">Events <span class="dot">✦</span></span>
+      <span class="mqt">Commercial <span class="dot">✦</span></span>
+      <span class="mqt">Fine Art <span class="dot">✦</span></span>
+      <span class="mqt">Lifestyle <span class="dot">✦</span></span>
+      <span class="mqt">Maternity <span class="dot">✦</span></span>
+      <span class="mqt">Portraits <span class="dot">✦</span></span>
+      <span class="mqt">Weddings <span class="dot">✦</span></span>
+      <span class="mqt">Editorial <span class="dot">✦</span></span>
+      <span class="mqt">Events <span class="dot">✦</span></span>
+      <span class="mqt">Commercial <span class="dot">✦</span></span>
+      <span class="mqt">Fine Art <span class="dot">✦</span></span>
+      <span class="mqt">Lifestyle <span class="dot">✦</span></span>
+      <span class="mqt">Maternity <span class="dot">✦</span></span>
+    </div>
+  </div>
+
+  <!-- STATS BAND -->
+  <section id="stats">
+    <div class="stats-inner">
+      <div class="stat-cell">
+        <span class="stat-n" data-target="500">0</span>
+        <span class="stat-l">Sessions Completed</span>
+        <p class="stat-desc">Portraits, weddings &amp; commercial shoots delivered worldwide</p>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-n" data-target="8">0</span>
+        <span class="stat-l">Years of Experience</span>
+        <p class="stat-desc">Crafting intentional imagery across Africa and beyond</p>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-n" data-target="30">0</span>
+        <span class="stat-l">Awards &amp; Features</span>
+        <p class="stat-desc">Recognised by publications and creative institutions</p>
+      </div>
+      <div class="stat-cell">
+        <span class="stat-n" data-target="12">0</span>
+        <span class="stat-l">Countries Visited</span>
+        <p class="stat-desc">Destination shoots from Atlanta to Amsterdam</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="sec" id="about">
+    <div class="sec-inner about-g">
+      <div class="aph">
+        <div class="aph-corner"></div>
+        <div class="aph-main" id="aimg1">
+          <img src="John - Owner.png" alt="John — Kwartography" />
+        </div>
+        <div class="astat" id="astat">
+          <div class="astat-n" id="acnt">0</div>
+          <div class="astat-l">Years of Experience</div>
+        </div>
+      </div>
+      <div class="atxt">
+        <div class="sl"><span>About the Photographer</span></div>
+        <h2 class="stitle" id="abt-title">
+          <span class="cw"><span class="ci">A Camera Has Always</span></span><br />
+          <span class="cw"><span class="ci">Been Part of My <em>Story</em></span></span>
+        </h2>
+        <p class="abody" id="abody">
+          I still remember shooting my first wedding with little experience over 15 years ago —
+          and later capturing a stranger who would one day become my wife.
+          Photography, for me, is more than pictures; it's about freezing emotions and connections
+          that time might otherwise erase.
+        </p>
+        <div class="asign" id="asign">John — Kwartography</div>
+        <a href="#portfolio" class="btn btn-gold">View Portfolio <span class="arr"></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="sec-inner">
+      <div class="ph">
+        <div class="sl"><span>Selected Work</span></div>
+        <h2 class="stitle"><span class="cw"><span class="ci">Portfolio</span></span></h2>
+        <div class="pfil">
+          <button class="pfb on" data-f="all">All</button>
+          <button class="pfb" data-f="portrait">Portraits</button>
+          <button class="pfb" data-f="couples">Couples</button>
+          <button class="pfb" data-f="event">Events</button>
+          <button class="pfb" data-f="editorial">Editorial</button>
+        </div>
+      </div>
+    </div>
+    <div class="pgrid">
+      <div class="pi" data-c="portrait" data-t="In Bloom"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/_KWA3442.jpg" alt="In Bloom" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Portrait</div><div class="pname">In Bloom</div></div></div>
+      </div>
+      <div class="pi" data-c="couples" data-t="Into the Woods"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW103058-2.jpg" alt="Into the Woods" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Couples</div><div class="pname">Into the Woods</div></div></div>
+      </div>
+      <div class="pi" data-c="event" data-t="Celebration"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW106975.jpg" alt="Celebration" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Event</div><div class="pname">Celebration</div></div></div>
+      </div>
+      <div class="pi" data-c="portrait" data-t="Coastal Joy"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW100821.jpg" alt="Coastal Joy" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Portrait</div><div class="pname">Coastal Joy</div></div></div>
+      </div>
+      <div class="pi" data-c="event" data-t="The Dance"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW107786.jpg" alt="The Dance" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Event</div><div class="pname">The Dance</div></div></div>
+      </div>
+      <div class="pi" data-c="portrait" data-t="Still Moment"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW103505-3.jpg" alt="Still Moment" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Portrait</div><div class="pname">Still Moment</div></div></div>
+      </div>
+      <div class="pi" data-c="couples" data-t="By the Fire"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW109102.jpg" alt="By the Fire" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Couples</div><div class="pname">By the Fire</div></div></div>
+      </div>
+      <div class="pi" data-c="event" data-t="Evening Light"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW107072.jpg" alt="Evening Light" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Event</div><div class="pname">Evening Light</div></div></div>
+      </div>
+      <div class="pi" data-c="editorial" data-t="Radiance"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW106737.jpg" alt="Radiance" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Editorial</div><div class="pname">Radiance</div></div></div>
+      </div>
+      <div class="pi" data-c="portrait" data-t="Studio Session"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW109244.jpg" alt="Studio Session" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Portrait</div><div class="pname">Studio Session</div></div></div>
+      </div>
+      <div class="pi" data-c="event" data-t="The Gathering"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW109876.jpg" alt="The Gathering" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Event</div><div class="pname">The Gathering</div></div></div>
+      </div>
+      <div class="pi" data-c="editorial" data-t="Into the Woods"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW103022-2.jpg" alt="Into the Woods" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Editorial</div><div class="pname">Into the Woods</div></div></div>
+      </div>
+      <div class="pi" data-c="couples" data-t="At the Keys"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW109632.jpg" alt="At the Keys" loading="lazy" width="1400" height="933" />
+        <div class="pov"><div><div class="pcat">Couples</div><div class="pname">At the Keys</div></div></div>
+      </div>
+      <div class="pi" data-c="event" data-t="In the Room"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW108034.jpg" alt="In the Room" loading="lazy" width="1280" height="1920" />
+        <div class="pov"><div><div class="pcat">Event</div><div class="pname">In the Room</div></div></div>
+      </div>
+      <div class="pi" data-c="portrait" data-t="Open Air"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW109440.jpg" alt="Open Air" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Portrait</div><div class="pname">Open Air</div></div></div>
+      </div>
+      <div class="pi" data-c="event" data-t="Electric Night"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW108000.jpg" alt="Electric Night" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Event</div><div class="pname">Electric Night</div></div></div>
+      </div>
+      <div class="pi" data-c="couples" data-t="The Reveal"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW109621.jpg" alt="The Reveal" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Couples</div><div class="pname">The Reveal</div></div></div>
+      </div>
+      <div class="pi" data-c="event" data-t="Dressed in Red"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW109856.jpg" alt="Dressed in Red" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Event</div><div class="pname">Dressed in Red</div></div></div>
+      </div>
+      <div class="pi" data-c="editorial" data-t="Teal Room"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/_KWA3439.jpg" alt="Teal Room" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Editorial</div><div class="pname">Teal Room</div></div></div>
+      </div>
+      <div class="pi" data-c="portrait" data-t="Joy"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW109653.jpg" alt="Joy" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Portrait</div><div class="pname">Joy</div></div></div>
+      </div>
+      <div class="pi" data-c="event" data-t="The Formal"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW107271.jpg" alt="The Formal" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Event</div><div class="pname">The Formal</div></div></div>
+      </div>
+      <div class="pi" data-c="event" data-t="Profile"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW107313.jpg" alt="Profile" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Event</div><div class="pname">Profile</div></div></div>
+      </div>
+      <div class="pi" data-c="event" data-t="Announcement"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/DSC00574.jpg" alt="Announcement" loading="lazy" width="1400" height="933" />
+        <div class="pov"><div><div class="pcat">Event</div><div class="pname">Announcement</div></div></div>
+      </div>
+      <div class="pi" data-c="editorial" data-t="The Chair"><div class="rmask"></div>
+        <img src="site-photo-download-1of1/Highlights/KW109654.jpg" alt="The Chair" loading="lazy" width="933" height="1400" />
+        <div class="pov"><div><div class="pcat">Editorial</div><div class="pname">The Chair</div></div></div>
+      </div>
+    </div>
+    <div class="port-more">
+      <a href="https://kwartography.mypixieset.com/" target="_blank" rel="noopener" class="btn btn-wht">
+        View Full Gallery <span class="arr"></span>
+      </a>
+    </div>
+  </section>
+
+
+  <!-- SERVICES -->
+  <section class="sec" id="services">
+    <div class="sec-inner">
+      <div class="sl"><span>What I Shoot</span></div>
+      <h2 class="stitle"><span class="cw"><span class="ci">Sessions</span></span></h2>
+      <div class="svgrid">
+        <div class="svc"><div class="snum">01</div><div class="snm">Portrait Sessions</div><div class="sdc">Individual, family, and professional headshot sessions crafted to reveal authentic personality through deliberate light and composition.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
+        <div class="svc"><div class="snum">02</div><div class="snm">Weddings &amp; Events</div><div class="sdc">Full-day wedding coverage and corporate event documentation, preserving every fleeting emotion and celebratory moment with artistry.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
+        <div class="svc"><div class="snum">03</div><div class="snm">Editorial &amp; Commercial</div><div class="sdc">Brand campaigns, magazine spreads, and product photography designed to align with your visual identity and captivate your audience.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
+        <div class="svc"><div class="snum">04</div><div class="snm">Fine Art Prints</div><div class="sdc">Museum-grade archival prints of select works. Available in limited editions for home and gallery display.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
+        <div class="svc"><div class="snum">05</div><div class="snm">Maternity &amp; Newborn</div><div class="sdc">Intimate sessions celebrating new life — from the anticipation of arrival to the tenderness of early days.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
+        <div class="svc"><div class="snum">06</div><div class="snm">Destination Photography</div><div class="sdc">Available to travel across Africa and internationally. Elopements, destination weddings, and travel editorial are welcomed.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPREAD / PULLQUOTE -->
+  <section id="spread">
+    <img class="spimg" id="spimg"
+      src="site-photo-download-1of1/Highlights/KW109856.jpg"
+      alt="Fine art photography" />
+  </section>
+
+  <!-- PROCESS -->
+  <section class="sec" id="process">
+    <div class="sec-inner">
+      <div class="sl"><span>From Inquiry to Gallery</span></div>
+      <h2 class="stitle"><span class="cw"><span class="ci">How a Shoot Works</span></span></h2>
+      <div class="prgrid">
+        <div class="prstep"><div class="prn">01</div><div class="prt">Inquiry & Consultation</div><div class="prd">Tell me about your shoot — the occasion, the feeling you want, the location you have in mind. We'll talk it through and make sure we're a great fit.</div></div>
+        <div class="prstep"><div class="prn">02</div><div class="prt">Pre-Shoot Planning</div><div class="prd">Location scouting, outfit guidance, timing for the best light, and a clear shot list so we both arrive fully prepared.</div></div>
+        <div class="prstep"><div class="prn">03</div><div class="prt">The Session</div><div class="prd">A relaxed shoot where I direct naturally and capture real moments — no stiff poses, just you at your best in front of the camera.</div></div>
+        <div class="prstep"><div class="prn">04</div><div class="prt">Your Gallery</div><div class="prd">Professionally retouched images delivered to a private online gallery within the agreed turnaround. High-res downloads and print orders included.</div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- TESTIMONIALS -->
+  <section class="sec" id="testimonials">
+    <div class="sec-inner">
+      <div class="sl"><span>Client Stories</span></div>
+      <h2 class="stitle"><span class="cw"><span class="ci">After the Shoot</span></span></h2>
+      <div class="tgrid">
+        <div class="tc">
+          <div class="tstars"><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div>
+          <p class="ttxt">"The photos exceeded every expectation. Kwartography has an extraordinary ability to capture genuine emotion. Our wedding album is a treasure we'll cherish forever."</p>
+          <div class="tau"><img class="tav" src="site-photo-download-1of1/Highlights/KW107313.jpg" alt="Abena" /><div><div class="tnm">Abena &amp; Kofi M.</div><div class="trl">Wedding Clients</div></div></div>
+        </div>
+        <div class="tc">
+          <div class="tstars"><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div>
+          <p class="ttxt">"Booking Kwartography for our brand campaign was the best creative decision we made. The images are cinematic, intentional, and absolutely on-brand."</p>
+          <div class="tau"><img class="tav" src="site-photo-download-1of1/Highlights/KW109653.jpg" alt="Ama" /><div><div class="tnm">Ama Serwaa</div><div class="trl">Creative Director</div></div></div>
+        </div>
+        <div class="tc">
+          <div class="tstars"><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span><span class="tstar"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span></div>
+          <p class="ttxt">"My portrait session was incredibly comfortable and the final images are stunning. I barely recognised how beautiful the photos could be. Highly recommend."</p>
+          <div class="tau"><img class="tav" src="site-photo-download-1of1/Highlights/DSC00574.jpg" alt="Efua" /><div><div class="tnm">Efua Asante</div><div class="trl">Portrait Client</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="sec" id="contact">
+    <div class="sec-inner ctg">
+      <div class="cti">
+        <div class="sl"><span>Book a Session</span></div>
+        <h2 class="stitle" id="ct-t">
+          <span class="cw"><span class="ci">Let's Capture</span></span><br />
+          <span class="cw"><span class="ci">Your <em>Story</em></span></span>
+        </h2>
+        <p class="ctb">Whether it's a wedding, portrait session, brand shoot, or something in between — every great photograph starts with a conversation. Get in touch and let's make something beautiful.</p>
+        <div class="ctrows">
+          <div class="crow">
+            <div class="cion"><svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+            <div><div class="clbl">Email</div><div class="cval">hello@kwartography.com</div></div>
+          </div>
+          <div class="crow">
+            <div class="cion"><svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+            <div><div class="clbl">Location</div><div class="cval">Georgia, USA · Available Worldwide</div></div>
+          </div>
+          <div class="crow">
+            <div class="cion"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg></div>
+            <div><div class="clbl">Response</div><div class="cval">Within 24 hours</div></div>
+          </div>
+        </div>
+      </div>
+      <form class="ctf" id="inquiryForm" onsubmit="doSubmit(event)">
+        <div class="fr">
+          <div class="fg"><label for="f-fname">First Name</label><input id="f-fname" name="firstname" type="text" placeholder="Kwame" required /></div>
+          <div class="fg"><label for="f-lname">Last Name</label><input id="f-lname" name="lastname" type="text" placeholder="Mensah" required /></div>
+        </div>
+        <div class="fg"><label for="f-email">Email</label><input id="f-email" name="email" type="email" placeholder="kwame@example.com" required /></div>
+        <div class="fg">
+          <label for="f-service">Service</label>
+          <select id="f-service" name="service">
+            <option value="">Select a service...</option>
+            <option>Portrait Session</option>
+            <option>Wedding Photography</option>
+            <option>Editorial / Commercial</option>
+            <option>Maternity / Newborn</option>
+            <option>Event Coverage</option>
+            <option>Fine Art Print</option>
+            <option>Destination Photography</option>
+          </select>
+        </div>
+        <div class="fg"><label for="f-date">Date (if known)</label><input id="f-date" name="date" type="date" /></div>
+        <div class="fg"><label for="f-msg">Tell Me About Your Shoot</label><textarea id="f-msg" name="message" placeholder="What are you photographing? Any specific shots, locations, or feelings you're going for?" required></textarea></div>
+        <button type="submit" class="btsub">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          Send Inquiry
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lb" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+    <button id="lbx" onclick="clsLb()">Close</button>
+    <button class="lbnav" id="lbp" onclick="mvLb(-1)" aria-label="Previous photo"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg></button>
+    <img id="lbi" src="" alt="Portfolio photo" />
+    <button class="lbnav" id="lbn" onclick="mvLb(1)" aria-label="Next photo"><svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg></button>
+    <div id="lbcap"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="fti">
+      <div class="ftl">KWAR<b>T</b>OGRAPHY</div>
+      <p class="ftc">&copy; 2026 Kwartography. All rights reserved.</p>
+      <div class="ftsoc">
+        <a href="#" class="ftsc" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" class="ftsc" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="#" class="ftsc" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ════════════════════ JAVASCRIPT ════════════════════ -->
+  <script>
+  /* ── SCROLL RESTORE: always start at top on refresh ─── */
+  if (history.scrollRestoration) history.scrollRestoration = 'manual';
+  window.scrollTo(0, 0);
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ── LENIS SMOOTH SCROLL ─────────────────────────────── */
+  const lenis = new Lenis({
+    duration: 1.4,
+    easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+  });
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add(time => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+
+  /* ── LOADER ──────────────────────────────────────────── */
+  const WORD = 'KWARTOGRAPHY';
+  const lw = document.getElementById('lw');
+  WORD.split('').forEach(c => {
+    const s = document.createElement('span');
+    s.className = 'ldr-ch'; s.textContent = c;
+    lw.appendChild(s);
+  });
+
+  const ltl = gsap.timeline({
+    onComplete: () => gsap.to('#ldr', {
+      opacity: 0, duration: .7, delay: .2,
+      onComplete: () => { document.getElementById('ldr').style.display = 'none'; initHero(); }
+    })
+  });
+  ltl
+    .to('.ldr-ch', { y: '0%', opacity: 1, duration: .55, stagger: .04, ease: 'expo.out' })
+    .to('#lb2', { width: '100%', duration: 1.6, ease: 'power2.inOut' }, '-=.2')
+    .to({}, {
+      duration: 1.6,
+      onUpdate() { document.getElementById('lnum').textContent = Math.round(this.progress() * 100) + '%'; }
+    }, '<');
+
+  /* ── MOBILE MENU ─────────────────────────────────────── */
+  let menuOpen = false;
+  function toggleMenu() {
+    menuOpen = !menuOpen;
+    document.getElementById('mmenu').classList.toggle('open', menuOpen);
+    document.getElementById('ham').classList.toggle('open', menuOpen);
+    if (menuOpen) { lenis.stop(); } else { lenis.start(); }
+  }
+  function closeMenu() {
+    if (!menuOpen) return;
+    menuOpen = false;
+    document.getElementById('mmenu').classList.remove('open');
+    document.getElementById('ham').classList.remove('open');
+    lenis.start();
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (menuOpen) closeMenu(); else if (document.getElementById('lb').classList.contains('open')) clsLb(); } });
+  document.getElementById('mmenu').addEventListener('click', function(e) { if (e.target === this) closeMenu(); });
+
+  /* ── HERO ANIMATIONS ────────────────────────────────── */
+  function initHero() {
+    /* Clip-path frame shrink on scroll */
+    gsap.fromTo('#hero',
+      { clipPath: 'inset(0px 0px 0px 0px round 0px)' },
+      {
+        clipPath: 'inset(20px 20px 20px 20px round 18px)',
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '#hero', start: 'top top', end: '+=500',
+          scrub: 0.5, pin: true, pinSpacing: true,
+        }
+      }
+    );
+    /* Photo parallax */
+    gsap.to('.hero-photo', {
+      yPercent: 15, ease: 'none',
+      scrollTrigger: { trigger: '#hero', start: 'top top', end: '+=500', scrub: 0.5 }
+    });
+    /* Text entrance */
+    gsap.set('#h-ey',  { opacity: 0, y: 12 });
+    gsap.set('#hero .wi', { y: '110%' });
+    gsap.set('#h-act', { opacity: 0, y: 16 });
+    const htl = gsap.timeline({ delay: .2 });
+    htl
+      .to('#h-ey',      { opacity: 1, y: 0, duration: .7, ease: 'power3.out' })
+      .to('#hero .wi',  { y: '0%', duration: 1.1, stagger: .14, ease: 'expo.out' }, '-=.3')
+      .to('#h-act',     { opacity: 1, y: 0, duration: .7, ease: 'power3.out' }, '-=.4');
+  }
+
+  /* ── CURSOR ──────────────────────────────────────────── */
+  const cd = document.getElementById('cd');
+  const cr = document.getElementById('cr');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  (function tick() {
+    rx += (mx - rx) * .1; ry += (my - ry) * .1;
+    cd.style.left = mx + 'px'; cd.style.top = my + 'px';
+    cr.style.left = rx + 'px'; cr.style.top = ry + 'px';
+    requestAnimationFrame(tick);
+  })();
+  document.querySelectorAll('a,button').forEach(el => {
+    el.addEventListener('mouseenter', () => cr.classList.add('lg'));
+    el.addEventListener('mouseleave', () => cr.classList.remove('lg'));
+  });
+  document.querySelectorAll('.pi,.aph,.spimg,.hg-card').forEach(el => {
+    el.addEventListener('mouseenter', () => { cr.classList.remove('lg'); cr.classList.add('view'); });
+    el.addEventListener('mouseleave', () => cr.classList.remove('view'));
+  });
+
+  /* ── NAV ─────────────────────────────────────────────── */
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('stuck', window.scrollY > 60);
+  }, { passive: true });
+
+  /* ── CLIP TITLE REVEALS ──────────────────────────────── */
+  // start: 'top 88%' fires earlier so text isn't still hidden mid-scroll
+  document.querySelectorAll('.ci').forEach(el => {
+    gsap.to(el, { y: '0%', duration: 0.6, ease: 'expo.out',
+      scrollTrigger: { trigger: el, start: 'top 88%' }
+    });
+  });
+
+  /* ── ABOUT ───────────────────────────────────────────── */
+  gsap.to('#aimg1', { clipPath: 'inset(0% 0 0 0)', duration: 0.8, ease: 'expo.out', scrollTrigger: { trigger: '#aimg1', start: 'top 82%' } });
+  gsap.to('#aimg1 img', { scale: 1, duration: 0.9, ease: 'power2.out', scrollTrigger: { trigger: '#aimg1', start: 'top 82%' } });
+  ScrollTrigger.create({
+    trigger: '#astat', start: 'top 85%', onEnter: () => {
+      gsap.to('#astat', { opacity: 1, x: 0, duration: .5, ease: 'power3.out' });
+      const o = { v: 0 };
+      gsap.to(o, { v: 8, duration: 1.2, ease: 'power2.out', delay: .15, onUpdate: () => { document.getElementById('acnt').textContent = Math.round(o.v) + '+'; } });
+    }
+  });
+  gsap.from('#abody', { opacity: 0, y: 22, duration: .6, ease: 'power3.out', scrollTrigger: { trigger: '#abody', start: 'top 88%' } });
+  // Set initial state before animating asign
+  gsap.set('#asign', { opacity: 0, x: -20 });
+  gsap.to('#asign',  { opacity: 1, x: 0, duration: .6, ease: 'power3.out', scrollTrigger: { trigger: '#asign', start: 'top 88%' } });
+
+  /* ── PORTFOLIO WIPE ──────────────────────────────────── */
+  document.querySelectorAll('.pi').forEach((item, i) => {
+    gsap.to(item.querySelector('.rmask'), {
+      scaleY: 0, transformOrigin: 'bottom', duration: 0.7, ease: 'expo.out',
+      delay: (i % 3) * .05,
+      scrollTrigger: { trigger: item, start: 'top 92%' }
+    });
+  });
+
+
+  /* ── SERVICES ────────────────────────────────────────── */
+  gsap.from('.svc', { opacity: 0, y: 32, duration: .5, stagger: .05, ease: 'power3.out', scrollTrigger: { trigger: '.svgrid', start: 'top 84%' } });
+
+  /* ── PROCESS ─────────────────────────────────────────── */
+  gsap.from('.prstep', { opacity: 0, y: 28, duration: .5, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.prgrid', start: 'top 84%' } });
+
+  /* ── SPREAD PARALLAX ─────────────────────────────────── */
+  gsap.to('#spimg', { yPercent: -18, ease: 'none', scrollTrigger: { trigger: '#spread', start: 'top bottom', end: 'bottom top', scrub: 0.6 } });
+
+  /* ── TESTIMONIAL 3D TILT ─────────────────────────────── */
+  document.querySelectorAll('.tc').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - .5;
+      const y = (e.clientY - r.top)  / r.height - .5;
+      gsap.to(card, { rotateX: -y * 10, rotateY: x * 10, transformPerspective: 800, duration: .4, ease: 'power2.out' });
+    });
+    card.addEventListener('mouseleave', () => gsap.to(card, { rotateX: 0, rotateY: 0, duration: .7, ease: 'elastic.out(1,.7)' }));
+  });
+  gsap.from('.tc', { opacity: 0, y: 40, duration: .6, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.tgrid', start: 'top 84%' } });
+
+  /* ── CONTACT ─────────────────────────────────────────── */
+  gsap.from('.ctrows', { opacity: 0, y: 24, duration: .55, ease: 'power3.out', scrollTrigger: { trigger: '.ctrows', start: 'top 85%' } });
+  gsap.from('.ctf',    { opacity: 0, x: 40, duration: .65, ease: 'power3.out', scrollTrigger: { trigger: '.ctf',    start: 'top 82%' } });
+  gsap.from('.ctb',    { opacity: 0, y: 18, duration: .55, ease: 'power3.out', scrollTrigger: { trigger: '.ctb',    start: 'top 88%' } });
+
+  /* ── MAGNETIC BOOK BUTTON ────────────────────────────── */
+  const magEl = document.querySelector('.nav-book');
+  if (magEl) {
+    magEl.addEventListener('mousemove', e => {
+      const r = magEl.getBoundingClientRect();
+      gsap.to(magEl, { x: (e.clientX - r.left - r.width / 2) * .4, y: (e.clientY - r.top - r.height / 2) * .4, duration: .4, ease: 'power2.out' });
+    });
+    magEl.addEventListener('mouseleave', () => gsap.to(magEl, { x: 0, y: 0, duration: .7, ease: 'elastic.out(1,.5)' }));
+  }
+
+  /* ── PORTFOLIO FILTER ────────────────────────────────── */
+  document.querySelectorAll('.pfb').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.pfb').forEach(b => b.classList.remove('on'));
+      this.classList.add('on');
+      const f = this.dataset.f;
+      document.querySelectorAll('.pi').forEach((item, i) => {
+        const show = f === 'all' || item.dataset.c === f;
+        gsap.to(item, { opacity: show ? 1 : .15, scale: show ? 1 : .96, duration: .5, ease: 'power2.out', delay: i * .03 });
+        item.style.pointerEvents = show ? 'auto' : 'none';
+      });
+    });
+  });
+
+  /* ── LIGHTBOX ────────────────────────────────────────── */
+  const lbEl = document.getElementById('lb');
+  const lbi  = document.getElementById('lbi');
+  const lbcp = document.getElementById('lbcap');
+  let lbIdx = 0;
+  const lbs = [];
+  document.querySelectorAll('.pi').forEach((item, i) => {
+    const img = item.querySelector('img');
+    lbs.push({ src: img.src, t: item.dataset.t, c: item.dataset.c });
+    item.addEventListener('click', () => { lbIdx = i; opnLb(i); });
+  });
+  function opnLb(i) {
+    lbi.src = lbs[i].src;
+    lbcp.textContent = (lbs[i].c || '').toUpperCase() + (lbs[i].t ? ' — ' + lbs[i].t : '');
+    lbEl.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    lenis.stop();
+    gsap.from(lbi, { opacity: 0, scale: .94, duration: .5, ease: 'power3.out' });
+  }
+  function clsLb() {
+    gsap.to(lbi, { opacity: 0, scale: .94, duration: .3, ease: 'power2.in', onComplete: () => { lbEl.classList.remove('open'); document.body.style.overflow = ''; lenis.start(); } });
+  }
+  function mvLb(d) {
+    lbIdx = (lbIdx + d + lbs.length) % lbs.length;
+    gsap.to(lbi, { opacity: 0, x: d * 40, duration: .2, ease: 'power2.in', onComplete: () => {
+      lbi.src = lbs[lbIdx].src;
+      lbcp.textContent = (lbs[lbIdx].c || '').toUpperCase() + ' — ' + (lbs[lbIdx].t || '');
+      gsap.fromTo(lbi, { opacity: 0, x: -d * 40 }, { opacity: 1, x: 0, duration: .35, ease: 'power3.out' });
+    }});
+  }
+  lbEl.addEventListener('click', e => { if (e.target === lbEl) clsLb(); });
+
+  /* ── STATS COUNT-UP ──────────────────────────────────── */
+  const bttBtn = document.getElementById('btt');
+  window.addEventListener('scroll', () => {
+    bttBtn.classList.toggle('show', window.scrollY > 600);
+  }, { passive: true });
+
+  document.querySelectorAll('.stat-n[data-target]').forEach(el => {
+    const target = parseInt(el.dataset.target, 10);
+    ScrollTrigger.create({
+      trigger: el, start: 'top 88%', once: true,
+      onEnter() {
+        const obj = { v: 0 };
+        gsap.to(obj, {
+          v: target, duration: 1.4, ease: 'power2.out',
+          onUpdate() { el.textContent = Math.round(obj.v) + '+'; }
+        });
+      }
+    });
+  });
+  gsap.from('.stat-cell', { opacity: 0, y: 28, duration: .8, stagger: .1, ease: 'power3.out', scrollTrigger: { trigger: '#stats', start: 'top 85%' } });
+
+  /* ── VIDEO HERO ──────────────────────────────────────── */
+  const heroVid = document.getElementById('heroVideo');
+  if (heroVid) {
+    heroVid.addEventListener('playing', () => heroVid.classList.add('playing'));
+    // silent fallback — if no video file present, image stays visible
+    heroVid.addEventListener('error', () => {}, { once: true });
+  }
+
+  /* ── FORM ────────────────────────────────────────────── */
+  function doSubmit(e) {
+    e.preventDefault();
+    const f = e.target;
+    const btn = f.querySelector('.btsub');
+    const orig = btn.innerHTML;
+
+    const firstname = f.firstname.value.trim();
+    const lastname  = f.lastname.value.trim();
+    const email     = f.email.value.trim();
+    const service   = f.service.value || 'Not specified';
+    const date      = f.date.value || 'Flexible';
+    const message   = f.message.value.trim();
+
+    const subject = encodeURIComponent(`Photography Inquiry — ${service} | ${firstname} ${lastname}`);
+    const body = encodeURIComponent(
+      `Name: ${firstname} ${lastname}\nEmail: ${email}\nService: ${service}\nPreferred Date: ${date}\n\nMessage:\n${message}`
+    );
+
+    window.location.href = `mailto:hello@kwartography.com?subject=${subject}&body=${body}`;
+
+    btn.disabled = true;
+    gsap.to(btn, { background: '#1e6641', duration: .4 });
+    btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Opening your email...';
+    setTimeout(() => {
+      gsap.to(btn, { background: '', duration: .4 });
+      btn.innerHTML = orig;
+      btn.disabled = false;
+      f.reset();
+    }, 4000);
+  }
+  </script>
+
+</body>
+</html>

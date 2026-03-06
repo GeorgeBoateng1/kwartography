@@ -570,6 +570,7 @@
       padding: 52px 40px; border-right: 1px solid var(--border);
       border-bottom: 1px solid var(--border); position: relative;
       overflow: hidden; cursor: none; transition: background .4s;
+      display: block; text-decoration: none; color: inherit;
     }
     .svc::after {
       content: ''; position: absolute; bottom: 0; left: 0;
@@ -1208,12 +1209,12 @@
       <div class="sl"><span>What I Shoot</span></div>
       <h2 class="stitle"><span class="cw"><span class="ci">Sessions</span></span></h2>
       <div class="svgrid">
-        <div class="svc"><div class="snum">01</div><div class="snm">Portrait Sessions</div><div class="sdc">Individual, family, and professional headshot sessions crafted to reveal authentic personality through deliberate light and composition.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
-        <div class="svc"><div class="snum">02</div><div class="snm">Weddings &amp; Events</div><div class="sdc">Full-day wedding coverage and corporate event documentation, preserving every fleeting emotion and celebratory moment with artistry.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
-        <div class="svc"><div class="snum">03</div><div class="snm">Editorial &amp; Commercial</div><div class="sdc">Brand campaigns, magazine spreads, and product photography designed to align with your visual identity and captivate your audience.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
-        <div class="svc"><div class="snum">04</div><div class="snm">Fine Art Prints</div><div class="sdc">Museum-grade archival prints of select works. Available in limited editions for home and gallery display.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
-        <div class="svc"><div class="snum">05</div><div class="snm">Maternity &amp; Newborn</div><div class="sdc">Intimate sessions celebrating new life — from the anticipation of arrival to the tenderness of early days.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
-        <div class="svc"><div class="snum">06</div><div class="snm">Destination Photography</div><div class="sdc">Available to travel across Africa and internationally. Elopements, destination weddings, and travel editorial are welcomed.</div><div class="slnk">Enquire <span class="arr"></span></div></div>
+        <a class="svc" href="#contact" data-service="Portrait Session"><div class="snum">01</div><div class="snm">Portrait Sessions</div><div class="sdc">Individual, family, and professional headshot sessions crafted to reveal authentic personality through deliberate light and composition.</div><div class="slnk">Inquire <span class="arr"></span></div></a>
+        <a class="svc" href="#contact" data-service="Wedding Photography"><div class="snum">02</div><div class="snm">Weddings &amp; Events</div><div class="sdc">Full-day wedding coverage and corporate event documentation, preserving every fleeting emotion and celebratory moment with artistry.</div><div class="slnk">Inquire <span class="arr"></span></div></a>
+        <a class="svc" href="#contact" data-service="Editorial / Commercial"><div class="snum">03</div><div class="snm">Editorial &amp; Commercial</div><div class="sdc">Brand campaigns, magazine spreads, and product photography designed to align with your visual identity and captivate your audience.</div><div class="slnk">Inquire <span class="arr"></span></div></a>
+        <a class="svc" href="#contact" data-service="Fine Art Print"><div class="snum">04</div><div class="snm">Fine Art Prints</div><div class="sdc">Museum-grade archival prints of select works. Available in limited editions for home and gallery display.</div><div class="slnk">Inquire <span class="arr"></span></div></a>
+        <a class="svc" href="#contact" data-service="Maternity / Newborn"><div class="snum">05</div><div class="snm">Maternity &amp; Newborn</div><div class="sdc">Intimate sessions celebrating new life — from the anticipation of arrival to the tenderness of early days.</div><div class="slnk">Inquire <span class="arr"></span></div></a>
+        <a class="svc" href="#contact" data-service="Destination Photography"><div class="snum">06</div><div class="snm">Destination Photography</div><div class="sdc">Available to travel across Africa and internationally. Elopements, destination weddings, and travel editorial are welcomed.</div><div class="slnk">Inquire <span class="arr"></span></div></a>
       </div>
     </div>
   </section>
@@ -1504,6 +1505,12 @@
 
   /* ── SERVICES ────────────────────────────────────────── */
   gsap.from('.svc', { opacity: 0, y: 32, duration: .5, stagger: .05, ease: 'power3.out', scrollTrigger: { trigger: '.svgrid', start: 'top 84%' } });
+  document.querySelectorAll('.svc[data-service]').forEach(card => {
+    card.addEventListener('click', () => {
+      const sel = document.getElementById('f-service');
+      if (sel) sel.value = card.dataset.service;
+    });
+  });
 
   /* ── PROCESS ─────────────────────────────────────────── */
   gsap.from('.prstep', { opacity: 0, y: 28, duration: .5, stagger: .08, ease: 'power3.out', scrollTrigger: { trigger: '.prgrid', start: 'top 84%' } });
